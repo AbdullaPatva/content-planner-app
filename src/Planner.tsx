@@ -1,4 +1,4 @@
-import { useClient } from '@sanity/sdk-react'
+import { useSanityClient } from './SanityClientContext'
 import { Box, Card, Flex, Spinner, Stack, Text, Button } from '@sanity/ui'
 import { ChevronLeftIcon, ChevronRightIcon, CogIcon, CalendarIcon, ThListIcon } from '@sanity/icons'
 import {
@@ -22,7 +22,7 @@ type Article = { _id: string; title: string; publishAt: string }
 const QUERY = /* groq */`*[_type=="article" && defined(publishAt)]{_id,title,publishAt}`
 
 export function Planner() {
-  const client = useClient({ apiVersion: '2025-07-15' })
+  const client = useSanityClient()
   const [cursor, setCursor] = useState(startOfMonth(new Date()))
   const [articles, setArticles] = useState<Article[]>([])
   const [busy, setBusy] = useState(true)

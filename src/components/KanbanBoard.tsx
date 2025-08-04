@@ -1,4 +1,4 @@
-import { useClient } from '@sanity/sdk-react'
+import { useSanityClient } from '../SanityClientContext'
 import { Box, Spinner, Text } from '@sanity/ui'
 import { useEffect, useState } from 'react'
 import {
@@ -17,7 +17,7 @@ export type Article = {
 const QUERY = /* groq */`*[_type=="article" && defined(status)]{_id,title,status}`
 
 export function KanbanBoard({ onOpenMeta }: { onOpenMeta: (id: string) => void }) {
-  const client = useClient({ apiVersion: '2025-07-15' })
+  const client = useSanityClient()
   const statuses = useStatuses()
   const [articles, setArticles] = useState<Article[]>([])
   const [busy, setBusy] = useState(true)

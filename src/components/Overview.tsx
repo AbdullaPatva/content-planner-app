@@ -1,4 +1,4 @@
-import { useClient } from '@sanity/sdk-react'
+import { useSanityClient } from '../SanityClientContext'
 import { Box, Card, Label, Select, Spinner, Text, Button, Flex } from '@sanity/ui'
 import { useEffect, useState } from 'react'
 import { useStatuses } from '../lib/useStatuses'
@@ -19,7 +19,7 @@ const Q = `*[_type=="article"]{
 }`
 
 export function Overview() {
-  const client = useClient({ apiVersion: '2025-07-15' })
+  const client = useSanityClient()
   const [rows, setRows] = useState<Row[]>([])
   const [busy, setBusy] = useState(true)
   useEffect(() => { client.fetch<Row[]>(Q).then(r => { setRows(r); setBusy(false) }) }, [client])

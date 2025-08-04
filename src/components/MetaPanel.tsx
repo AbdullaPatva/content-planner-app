@@ -1,4 +1,4 @@
-import {useClient} from '@sanity/sdk-react'
+import {useSanityClient} from '../SanityClientContext'
 import {Box,Button,Card,Flex,Select,Stack,TextInput,Label,Text} from '@sanity/ui'
 import {useEffect,useState} from 'react'
 import {Category,useCategories} from '../lib/useCategories'
@@ -7,7 +7,7 @@ import {ContentEditorModal} from './ContentEditorModal'
 type ArticleMeta={_id:string;icon?:string;labels?:string[];categories?:{_ref:string}[]}
 
 export function MetaPanel({id,onClose}:{id:string;onClose:()=>void}){
-  const client=useClient({apiVersion:'2025-07-15'})
+  const client=useSanityClient()
   const cats=useCategories()
   const [meta,setMeta]=useState<ArticleMeta|null>(null)
   const [icon,setIcon]=useState('')

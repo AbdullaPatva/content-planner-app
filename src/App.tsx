@@ -1,17 +1,8 @@
-import {type SanityConfig} from '@sanity/sdk'
-import {SanityApp} from '@sanity/sdk-react'
-import {Flex, Spinner} from '@sanity/ui'
+import {Flex, Spinner, ThemeProvider, studioTheme} from '@sanity/ui'
 import {Planner} from './Planner'
-import {SanityUI} from './SanityUI'
+import {SanityClientProvider} from './SanityClientContext'
 
 function App() {
-  const sanityConfigs: SanityConfig[] = [
-    {
-      projectId: 'o7xwtv7a',
-      dataset: 'production',
-    }
-  ]
-
   function Loading() {
     return (
       <Flex justify="center" align="center" width="100vw" height="fill">
@@ -21,11 +12,13 @@ function App() {
   }
 
   return (
-    <SanityUI>
-      <SanityApp config={sanityConfigs} fallback={<Loading />}>
-        <Planner />
-      </SanityApp>
-    </SanityUI>
+    <ThemeProvider theme={studioTheme}>
+      <SanityClientProvider>
+        <Flex style={{ width: '100vw', height: '100vh' }}>
+          <Planner />
+        </Flex>
+      </SanityClientProvider>
+    </ThemeProvider>
   );
 }
 

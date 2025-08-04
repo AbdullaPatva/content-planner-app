@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Card, Button, Text, Flex, Spinner } from '@sanity/ui'
-import { useClient } from '@sanity/sdk-react'
+import { useSanityClient } from '../SanityClientContext'
 import { SaveIcon, XIcon } from '@sanity/icons'
 
 interface PortableTextEditorProps {
@@ -20,7 +20,7 @@ export function PortableTextEditorComponent({
   onCancel,
   title = 'Edit Content'
 }: PortableTextEditorProps) {
-  const client = useClient({ apiVersion: '2025-07-15' })
+  const client = useSanityClient()
   const [value, setValue] = useState(initialValue)
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(true)
