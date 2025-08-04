@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "sanity",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev"
+} 
