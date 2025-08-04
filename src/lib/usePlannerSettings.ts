@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {useClient} from '@sanity/sdk-react'
+import {useSanityClient} from '../SanityClientContext'
 
 export interface PlannerSettings {
   _id: string
@@ -12,7 +12,7 @@ const QUERY = /* groq */ `*[_type=="plannerSettings"][0]`
 
 /** Returns settings doc (creates one if missing) and a save() helper */
 export function usePlannerSettings() {
-  const client = useClient({apiVersion: '2025-07-15'})
+  const client = useSanityClient()
   const [settings, setSettings] = useState<PlannerSettings | null>(null)
 
   useEffect(() => {

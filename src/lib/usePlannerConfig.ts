@@ -1,4 +1,4 @@
-import { useClient } from '@sanity/sdk-react'
+import { useSanityClient } from '../SanityClientContext'
 import { useEffect, useState, useCallback } from 'react'
 
 const CONFIG_ID = 'planner.config'
@@ -19,7 +19,7 @@ export function usePlannerConfig(): [
     (patch: Partial<PlannerConfig>) => Promise<void>,
     boolean,
 ] {
-    const client = useClient({ apiVersion: '2025-07-15' })
+    const client = useSanityClient()
     const [cfg, setCfg] = useState<PlannerConfig | null>(null)
     const [loading, setLoading] = useState(true)
 
