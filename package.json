@@ -5,7 +5,7 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "export SANITY_API_READ_TOKEN=$(cat .env.local | grep SANITY_API_READ_TOKEN | cut -d'=' -f2) && sanity dev",
     "build": "sanity build",
     "start": "sanity start",
     "vercel-build": "sanity build"

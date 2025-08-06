@@ -54,6 +54,8 @@ export function KanbanBoard({ onOpenMeta }: { onOpenMeta: (id: string) => void }
         .commit({ tag: 'planner-status-move' })
     } catch (err) {
       console.error('patch failed', err)
+      // Revert the optimistic update on failure
+      setArticles(p => p.map(a => a._id === articleId ? { ...a, status: doc.status } : a))
     }
   }
 
@@ -119,7 +121,9 @@ export function KanbanBoard({ onOpenMeta }: { onOpenMeta: (id: string) => void }
             overflowX: 'auto',
             padding: '8px 0',
             minHeight: 'calc(100vh - 200px)',
-            alignItems: 'flex-start'
+            alignItems: 'flex-start',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'rgba(102, 126, 234, 0.3) transparent'
           }}
         >
           {statuses.map(st => (
