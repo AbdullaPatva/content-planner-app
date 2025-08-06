@@ -1,0 +1,125 @@
+/* Global styles for the planner app */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Fix Sanity UI Text component pseudo-elements that cause text overlap */
+[data-ui="Text"]:before,
+[data-ui="Text"]:after,
+[data-ui="Text"]::before,
+[data-ui="Text"]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Fix all Sanity UI components that might have problematic pseudo-elements */
+[data-ui]:before,
+[data-ui]:after,
+[data-ui]::before,
+[data-ui]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure text elements display properly */
+[data-ui="Text"] {
+  display: block !important;
+  text-align: inherit !important;
+  line-height: inherit !important;
+}
+
+/* Fix specific text alignment issues */
+[data-ui="Text"][style*="text-align: center"] {
+  text-align: center !important;
+}
+
+[data-ui="Text"][style*="text-align: left"] {
+  text-align: left !important;
+}
+
+[data-ui="Text"][style*="text-align: right"] {
+  text-align: right !important;
+}
+
+/* Ensure proper text rendering */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Ensure drag and drop functionality works properly */
+[data-dnd-kit-draggable] {
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+[data-dnd-kit-draggable]:active {
+  cursor: grabbing !important;
+}
+
+[data-dnd-kit-droppable] {
+  pointer-events: auto !important;
+}
+
+/* Text overflow prevention */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-wrap {
+  word-break: break-word;
+  hyphens: auto;
+  white-space: normal;
+}
+
+/* Responsive text handling */
+@media (max-width: 768px) {
+  [data-ui="Text"] {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-ui="Text"] {
+    font-size: 12px !important;
+  }
+} 

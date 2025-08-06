@@ -36,7 +36,8 @@ export function ArticleCard({ id, title, onDoubleClick }: Props) {
         overflow: 'hidden',
         minHeight: '32px',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'flex-start',
+        wordBreak: 'break-word'
       }}
     >
       <Text 
@@ -49,33 +50,16 @@ export function ArticleCard({ id, title, onDoubleClick }: Props) {
           textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          width: '100%'
+          whiteSpace: 'normal',
+          width: '100%',
+          wordBreak: 'break-word',
+          hyphens: 'auto',
+          display: 'block',
+          textAlign: 'left'
         }}
       >
         {title}
       </Text>
-      
-      {/* Hover effect overlay */}
-      <Box
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(255, 255, 255, 0.1)',
-          opacity: 0,
-          transition: 'opacity 0.2s ease',
-          pointerEvents: 'none'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.opacity = '1'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.opacity = '0'
-        }}
-      />
     </Card>
   )
 }

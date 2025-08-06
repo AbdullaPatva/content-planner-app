@@ -1,6 +1,7 @@
 import {Flex, Spinner, ThemeProvider, studioTheme} from '@sanity/ui'
 import {Planner} from './Planner'
 import {SanityClientProvider} from './SanityClientContext'
+import './styles.css'
 
 function App() {
   function Loading() {
