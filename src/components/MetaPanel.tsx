@@ -48,7 +48,7 @@ export function MetaPanel({id,onClose}:{id:string;onClose:()=>void}){
         width: 400,
         background: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
+        // border: '1px solid rgba(255, 255, 255, 0.2)'
       }} 
       onClick={e=>e.stopPropagation()}
     >
@@ -116,7 +116,8 @@ export function MetaPanel({id,onClose}:{id:string;onClose:()=>void}){
                   marginTop: '4px',
                   background: 'white',
                   border: '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: '4px'
+                  borderRadius: '4px',
+                  zIndex: "unset"
                 }}
               />
             </Box>
@@ -130,7 +131,8 @@ export function MetaPanel({id,onClose}:{id:string;onClose:()=>void}){
                   marginTop: '4px',
                   background: 'white',
                   border: '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: '4px'
+                  borderRadius: '4px',
+                  zIndex: "unset"
                 }}
               />
             </Box>
